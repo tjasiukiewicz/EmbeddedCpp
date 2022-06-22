@@ -49,3 +49,7 @@ void Board::show() const {
 	}
 	show_column_name();
 }
+
+bool Board::move(int start_col, int start_row, int end_col, int end_row) {
+	return true;
+}
