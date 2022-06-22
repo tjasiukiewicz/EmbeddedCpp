@@ -35,7 +35,6 @@ inline bool is_cell_empty(char cell) {
 	return cell != ' ';
 }
 
-
 }
 
 Board::Board() {
@@ -57,24 +56,26 @@ Board::Board() {
 void Board::show() const {
 	show_column_name();
 	show_row_separator();
-	int row = HEIGHT;
-	while (row-->0) {
-		show_row(fields[row], row);
+	int row_idx = HEIGHT;
+	while (row_idx-->0) {
+		show_row(fields[row_idx], row_idx);
 	}
 	show_column_name();
 }
 
-bool Board::move(unsigned start_col, unsigned start_row, unsigned end_col, unsigned end_row) {
+bool Board::move(unsigned start_col, unsigned start_row,
+		unsigned end_col, unsigned end_row)
+{
 	assert((start_col < WIDTH) && (start_row < HEIGHT)
 		&& (end_col < WIDTH) && (end_row < HEIGHT));
 
-	if (is_cell_empty(fields[end_row][end_col])) {
-		return false;
+	if (!is_cell_empty(fields[end_row][end_col])) {
+		// Move piece
+		char piece = fields[start_row][start_col];
+		fields[start_row][start_col] = ' ';
+		fields[end_row][end_col] = piece;
+		return true;
 	}
 
-	char piece = fields[start_row][start_col];
-	fields[start_row][start_col] = ' ';
-	fields[end_row][end_col] = piece;
-	
-	return true;
+	return false;
 }

@@ -15,4 +15,5 @@ int main() {
 
 	try_move(board, 7U, 1U, 7U, 3U); // Legal move
 	try_move(board, 6U, 1U, 6U, 1U); // Illegal move
+	//try_move(board, 9U, 1U, 6U, 1U); // ASSERT!
 }
