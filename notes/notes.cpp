@@ -83,3 +83,25 @@ int main() {
     return f1(42) + f2(33);
 }
 
+
+// constexpr goodbolt
+#include <cstdint>
+
+#define HZ 1000000
+
+constexpr uint16_t rs_baud(unsigned speed) {
+    // C++11 tylko wyrażenia
+    return HZ < 500000 ? speed * HZ/1000 + 100: HZ/1000 * speed + 500;
+    /* C++14 i nowszy
+    if (HZ < 500000) {
+        return speed * HZ/1000 + 100;
+    }
+    return HZ/1000 * speed + 500;
+    */
+}
+
+int main() {
+    const uint16_t bauds = rs_baud(9600);
+    const auto b2 = rs_baud(13);
+    return bauds + b2;
+}
