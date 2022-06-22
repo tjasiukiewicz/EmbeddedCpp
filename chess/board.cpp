@@ -1,24 +1,38 @@
 #include <iostream>
 #include <cctype>
+#include <cassert>
 #include "board.hpp"
 
 namespace {
 
 inline void show_row_separator() {
-	std::cout << "  +-+-+-+-+-+-+-+-+\n";
+	std::cout << "  ";
+	auto i = Board::WIDTH;
+	while (i-->0) {
+		std::cout << "+-";
+	}
+	std::cout << "+\n";
 }
 
 inline void show_column_name() {
-	std::cout << "   a b c d e f g h\n";
+	std::cout << "   ";
+	for (auto i = 0U; i < Board::WIDTH; ++i) {
+		std::cout << static_cast<char>('a' + i) << ' ';
+	}
+	std::cout << '\n';
 }
 
 inline void show_row(const char cells[Board::WIDTH], int row_counter) {
 		std::cout << row_counter + 1 << ' ';
-		for (int col = 0; col < Board::WIDTH; ++col) {
+		for (unsigned col = 0U; col < Board::WIDTH; ++col) {
 			std::cout << "|" << cells[col];
 		}
 		std::cout << "| " << row_counter + 1 << "\n";
 		show_row_separator();
+}
+
+inline bool is_cell_empty(char cell) {
+	return cell != ' ';
 }
 
 
@@ -50,6 +64,17 @@ void Board::show() const {
 	show_column_name();
 }
 
-bool Board::move(int start_col, int start_row, int end_col, int end_row) {
+bool Board::move(unsigned start_col, unsigned start_row, unsigned end_col, unsigned end_row) {
+	assert((start_col < WIDTH) && (start_row < HEIGHT)
+		&& (end_col < WIDTH) && (end_row < HEIGHT));
+
+	if (is_cell_empty(fields[end_row][end_col])) {
+		return false;
+	}
+
+	char piece = fields[start_row][start_col];
+	fields[start_row][start_col] = ' ';
+	fields[end_row][end_col] = piece;
+	
 	return true;
 }

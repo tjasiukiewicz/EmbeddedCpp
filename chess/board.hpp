@@ -5,7 +5,7 @@ struct Board {
 	constexpr static unsigned HEIGHT = 8;
 	Board();
 	void show() const;
-	bool move(int start_col, int start_row, int end_col, int end_row);
+	bool move(unsigned start_col, unsigned start_row, unsigned end_col, unsigned end_row);
 private:
 	char fields[HEIGHT][WIDTH];
 };
