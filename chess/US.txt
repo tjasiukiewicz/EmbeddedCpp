@@ -1,0 +1,21 @@
+Cel:
+Implementacja aplikacji do gry w szachy. Wizualnie.. na konsoli
+z użyciem kodów ASCII, grają 2 osoby (ludzie). Aplikacja 
+sprawdza poprawność ruchu, bicia.
+
+1. Chcę zobaczyć pustą szachownicę z ustawionymi bierkami
+
+   a b c d e f g h
+  +-+-+-+-+-+-+-+-+
+8 | | | | | | | | | 8
+  +-+-+-+-+-+-+-+-+
+  ...
+  +-+-+-+-+-+-+-+-+
+2 |P|P|P|P|P|P|P|P| 2
+  +-+-+-+-+-+-+-+-+
+1 |R|N|B|Q|K|B|N|R| 1
+  +-+-+-+-+-+-+-+-+
+   a b c d e f g h
+
+2. Chcę wykonać ruch bierką (brak sprawdzania bicia i reguł dla bierki)
+   Ruch "hadkodowany" w main().
