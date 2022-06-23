@@ -63,18 +63,20 @@ void Board::show() const {
 	show_column_name();
 }
 
-bool Board::move(unsigned start_col, unsigned start_row,
-		unsigned end_col, unsigned end_row)
+bool Board::move(const Move& move)
 {
-	assert((start_col < WIDTH) && (start_row < HEIGHT)
-		&& (end_col < WIDTH) && (end_row < HEIGHT));
-
-	if (!is_cell_empty(fields[end_row][end_col])) {
-		// Move piece
-		char piece = fields[start_row][start_col];
-		fields[start_row][start_col] = ' ';
-		fields[end_row][end_col] = piece;
-		return true;
+	int s_row;
+	int s_col;
+	int e_row;
+	int e_col;
+	if (move.calculate_indexes(s_row, s_col, e_row, e_col)) {
+		if (!is_cell_empty(fields[e_row][e_col])) {
+			// Move piece
+			char piece = fields[s_row][s_col];
+			fields[s_row][s_col] = ' ';
+			fields[e_row][e_col] = piece;
+			return true;
+		}
 	}
 
 	return false;

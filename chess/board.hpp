@@ -1,5 +1,7 @@
 #pragma once
 
+#include "move.hpp"
+
 struct Board {
 	constexpr static unsigned WIDTH  = 8;
 	constexpr static unsigned HEIGHT = 8;
@@ -7,8 +9,7 @@ struct Board {
 	Board();
 
 	void show() const;
-	bool move(unsigned start_col, unsigned start_row,
-			unsigned end_col, unsigned end_row);
+	bool move(const Move& move);
 private:
 	char fields[HEIGHT][WIDTH];
 };

@@ -1,8 +1,8 @@
 .PHONY := clean
 
-CPPFLAGS := -Wall -Wextra -pedantic
+CPPFLAGS := -std=c++17 -Wall -Wextra -pedantic
 LDFLAGS :=
-OBJECTS := main.o board.o
+OBJECTS := main.o board.o move.o
 
 main: $(OBJECTS)
 	$(CXX) $(CPPFLAGS) $(LDFLAGS) -o $@ $^
