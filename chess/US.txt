@@ -19,3 +19,6 @@ sprawdza poprawność ruchu, bicia.
 
 2. Chcę wykonać ruch bierką (brak sprawdzania bicia i reguł dla bierki)
    Ruch "hadkodowany" w main().
+
+2a. (techniczny) Utworzyć klasę Move, przechowującą współrzędne znane
+   z szachów (np. "e2" na "e4") która zwraca indeksy techniczne ([0, 7])
