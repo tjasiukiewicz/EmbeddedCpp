@@ -2,7 +2,7 @@
 #include <cctype>
 #include <algorithm>
 #include "move.hpp"
-#include "board.hpp"
+#include "settings.hpp"
 
 namespace {
 
