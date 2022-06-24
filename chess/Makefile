@@ -2,7 +2,7 @@
 
 CPPFLAGS := -g -std=c++17 -Wall -Wextra -pedantic
 LDFLAGS :=
-OBJECTS := main.o board.o move.o player.o game.o
+OBJECTS := main.o board.o move.o player.o game.o display.o
 
 main: $(OBJECTS)
 	$(CXX) $(CPPFLAGS) $(LDFLAGS) -o $@ $^

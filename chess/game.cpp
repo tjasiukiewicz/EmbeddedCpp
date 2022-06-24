@@ -1,5 +1,5 @@
-#include <iostream>
 #include "game.hpp"
+#include "display.hpp"
 
 Game::Game()
 	: current_player{std::make_unique<Player>("Adam")},
@@ -9,14 +9,16 @@ Game::Game()
 }
 
 void Game::run() {
-	board->show();
+	board->prepare_display();
+	Display::show();
 	for(;;) {
 		auto move = current_player->get_move();
 		if (!board->move(move)) {
-			std::cerr << "Illegal move! Try again.\n";
+			Display::illegal_move_error();
 			continue;
 		}
-		board->show();
+		board->prepare_display();
+		Display::show();
 		std::swap(current_player, next_player);
 	}
 }

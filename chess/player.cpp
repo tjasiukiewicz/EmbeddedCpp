@@ -1,5 +1,5 @@
-#include <iostream>
 #include "player.hpp"
+#include "display.hpp"
 
 namespace {
 
@@ -22,15 +22,14 @@ Player::Player(const std::string& name_)
 	: name{name_} {}
 
 Move Player::get_move() const {
-	std::cout << "Move like: e2e4\n";
-	std::cout << "Player: " << name << " Your move: ";
 	std::string move_s;
 	for(;;) {
-		std::cin >> move_s;
+		Display::show_player_prompt(name);
+		move_s = Display::get_move_string();
 		if (is_move_ok(move_s)) {
 			break;
 		}
-		std::cerr << "Illegal move! Try again.\n";
+		Display::illegal_move_error();
 	}
 	return Move({move_s.begin(), move_s.begin() + 2}, {move_s.begin() + 2, move_s.end()});
 }

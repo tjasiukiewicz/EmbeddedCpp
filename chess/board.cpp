@@ -1,35 +1,10 @@
-#include <iostream>
 #include <cctype>
+#include <cstring>
 #include "board.hpp"
+#include "display.hpp"
 #include "move.hpp"
 
 namespace {
-
-inline void show_row_separator() {
-	std::cout << "  ";
-	auto i = BOARD_WIDTH;
-	while (i-->0) {
-		std::cout << "+-";
-	}
-	std::cout << "+\n";
-}
-
-inline void show_column_name() {
-	std::cout << "   ";
-	for (auto i = 0U; i < BOARD_WIDTH; ++i) {
-		std::cout << static_cast<char>('a' + i) << ' ';
-	}
-	std::cout << '\n';
-}
-
-inline void show_row(const char cells[BOARD_WIDTH], int row_counter) {
-	std::cout << row_counter + 1 << ' ';
-	for (unsigned col = 0U; col < BOARD_WIDTH; ++col) {
-		std::cout << "|" << cells[col];
-	}
-	std::cout << "| " << row_counter + 1 << "\n";
-	show_row_separator();
-}
 
 inline bool is_cell_empty(char cell) {
 	return cell != ' ';
@@ -53,16 +28,6 @@ Board::Board() {
 	}
 }
 
-void Board::show() const {
-	show_column_name();
-	show_row_separator();
-	int row_idx = BOARD_HEIGHT;
-	while (row_idx-->0) {
-		show_row(fields[row_idx], row_idx);
-	}
-	show_column_name();
-}
-
 bool Board::move(const Move& move) {
 	auto indexes = move.calculate_indexes();
 	if (indexes.has_value()) {
@@ -77,4 +42,10 @@ bool Board::move(const Move& move) {
 	}
 
 	return false;
+}
+
+void Board::prepare_display() const {
+	auto ptr = Display::get_data_location();
+	// XXX: Maybe conversion to Display format...
+	memcpy(ptr, fields, BOARD_WIDTH * BOARD_HEIGHT * sizeof(char));
 }
