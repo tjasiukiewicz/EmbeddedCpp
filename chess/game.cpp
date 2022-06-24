@@ -4,7 +4,8 @@
 Game::Game()
 	: current_player{std::make_unique<Player>("Adam")},
 	next_player{std::make_unique<Player>("Eve")},
-	board{std::make_unique<Board>()} {
+	board{std::make_unique<Board>()}
+{
 }
 
 void Game::run() {

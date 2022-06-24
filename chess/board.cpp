@@ -1,13 +1,13 @@
 #include <iostream>
 #include <cctype>
-#include <cassert>
 #include "board.hpp"
+#include "move.hpp"
 
 namespace {
 
 inline void show_row_separator() {
 	std::cout << "  ";
-	auto i = Board::WIDTH;
+	auto i = BOARD_WIDTH;
 	while (i-->0) {
 		std::cout << "+-";
 	}
@@ -16,15 +16,15 @@ inline void show_row_separator() {
 
 inline void show_column_name() {
 	std::cout << "   ";
-	for (auto i = 0U; i < Board::WIDTH; ++i) {
+	for (auto i = 0U; i < BOARD_WIDTH; ++i) {
 		std::cout << static_cast<char>('a' + i) << ' ';
 	}
 	std::cout << '\n';
 }
 
-inline void show_row(const char cells[Board::WIDTH], int row_counter) {
+inline void show_row(const char cells[BOARD_WIDTH], int row_counter) {
 	std::cout << row_counter + 1 << ' ';
-	for (unsigned col = 0U; col < Board::WIDTH; ++col) {
+	for (unsigned col = 0U; col < BOARD_WIDTH; ++col) {
 		std::cout << "|" << cells[col];
 	}
 	std::cout << "| " << row_counter + 1 << "\n";
@@ -45,7 +45,7 @@ Board::Board() {
 	}
 
 	const char figures[] = "RNBQKBNR";
-	for (auto idx = 0U; idx < WIDTH; ++idx) {
+	for (auto idx = 0U; idx < BOARD_WIDTH; ++idx) {
 		fields[0][idx] = figures[idx];
 		fields[1][idx] = 'P';
 		fields[6][idx] = 'p';
@@ -56,7 +56,7 @@ Board::Board() {
 void Board::show() const {
 	show_column_name();
 	show_row_separator();
-	int row_idx = HEIGHT;
+	int row_idx = BOARD_HEIGHT;
 	while (row_idx-->0) {
 		show_row(fields[row_idx], row_idx);
 	}

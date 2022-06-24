@@ -11,11 +11,11 @@ bool in_length(const std::string& position) {
 }
 
 bool in_column(const std::string& position) {
-	return (position[0] >= 'a') && (position[0] <= static_cast<char>('a' + Board::WIDTH));
+	return (position[0] >= 'a') && (position[0] <= static_cast<char>('a' + BOARD_WIDTH));
 }
 
 bool in_row(const std::string& position) {
-	return ((position[1] >= '1') && (position[1] <= static_cast<char>('0' + Board::WIDTH)));
+	return ((position[1] >= '1') && (position[1] <= static_cast<char>('0' + BOARD_WIDTH)));
 }
 
 std::pair<int, int> name_to_index(const std::string& position) {
