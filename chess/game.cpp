@@ -1,7 +1,7 @@
+#include <iostream>
 #include "game.hpp"
 #include "player.hpp"
 #include "board.hpp"
-#include <iostream>
 
 Game::Game()
 	: current_player{new Player("Adam")}, next_player{new Player("Eve")}, board{new Board()} {

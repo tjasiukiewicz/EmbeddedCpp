@@ -114,3 +114,6 @@ https://en.cppreference.com/w/cpp/language/attributes/nodiscard
 https://en.cppreference.com/w/cpp/language/attributes
 https://en.cppreference.com/w/cpp/utility/tuple
 https://en.m.wikibooks.org/wiki/More_C%252B%252B_Idioms/Curiously_Recurring_Template_Pattern
+https://github.com/kvasir-io/Kvasir
+https://www.boost.org/doc/libs/1_64_0/libs/msm/doc/HTML/index.html
+https://www.boost.org/doc/libs/1_79_0/libs/statechart/doc/index.html
