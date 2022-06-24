@@ -23,12 +23,12 @@ inline void show_column_name() {
 }
 
 inline void show_row(const char cells[Board::WIDTH], int row_counter) {
-		std::cout << row_counter + 1 << ' ';
-		for (unsigned col = 0U; col < Board::WIDTH; ++col) {
-			std::cout << "|" << cells[col];
-		}
-		std::cout << "| " << row_counter + 1 << "\n";
-		show_row_separator();
+	std::cout << row_counter + 1 << ' ';
+	for (unsigned col = 0U; col < Board::WIDTH; ++col) {
+		std::cout << "|" << cells[col];
+	}
+	std::cout << "| " << row_counter + 1 << "\n";
+	show_row_separator();
 }
 
 inline bool is_cell_empty(char cell) {
@@ -63,8 +63,7 @@ void Board::show() const {
 	show_column_name();
 }
 
-bool Board::move(const Move& move)
-{
+bool Board::move(const Move& move) {
 	auto indexes = move.calculate_indexes();
 	if (indexes.has_value()) {
 		auto [s_row, s_col, e_row, e_col] = *indexes;

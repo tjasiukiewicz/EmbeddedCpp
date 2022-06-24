@@ -1,5 +1,6 @@
 #include <utility>
-#include <iostream>
+#include <cctype>
+#include <algorithm>
 #include "move.hpp"
 #include "board.hpp"
 
@@ -25,8 +26,10 @@ std::pair<int, int> name_to_index(const std::string& position) {
 
 }
 
-Move::Move(const std::string& from, const std::string& to)
-	: from{from}, to{to} {
+Move::Move(const std::string& from_, const std::string& to_)
+	: from{from_}, to{to_} {
+	std::transform(from.begin(), from.end(), from.begin(), [](unsigned char c){ return std::tolower(c); });
+	std::transform(to.begin(), to.end(), to.begin(), [](unsigned char c){ return std::tolower(c); });
 }
 
 Move::coords_option_t Move::calculate_indexes() const {

@@ -11,6 +11,6 @@ struct Move {
 	Move(const std::string & from, const std::string& to);
 	[[nodiscard]] coords_option_t calculate_indexes() const;
 private:
-	const std::string from;
-	const std::string to;
+	std::string from;
+	std::string to;
 };
