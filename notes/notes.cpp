@@ -105,3 +105,12 @@ int main() {
     const auto b2 = rs_baud(13);
     return bauds + b2;
 }
+
+// Links...
+//
+https://isocpp.org/
+https://herbsutter.com/
+https://en.cppreference.com/w/cpp/language/attributes/nodiscard
+https://en.cppreference.com/w/cpp/language/attributes
+https://en.cppreference.com/w/cpp/utility/tuple
+https://en.m.wikibooks.org/wiki/More_C%252B%252B_Idioms/Curiously_Recurring_Template_Pattern

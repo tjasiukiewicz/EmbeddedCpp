@@ -65,11 +65,9 @@ void Board::show() const {
 
 bool Board::move(const Move& move)
 {
-	int s_row;
-	int s_col;
-	int e_row;
-	int e_col;
-	if (move.calculate_indexes(s_row, s_col, e_row, e_col)) {
+	auto indexes = move.calculate_indexes();
+	if (indexes.has_value()) {
+		auto [s_row, s_col, e_row, e_col] = *indexes;
 		if (!is_cell_empty(fields[e_row][e_col])) {
 			// Move piece
 			char piece = fields[s_row][s_col];

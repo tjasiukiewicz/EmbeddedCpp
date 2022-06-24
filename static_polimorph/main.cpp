@@ -24,6 +24,14 @@ private:
 template<typename T>
 std::vector<T*> Instances<T>::instances;
 
+/*
+template<typename... Types>
+struct Airplane : public Types... {
+};
+
+auto a = Airplane<Type1, Type2, Type3>("Wrona");
+*/
+
 struct Airplane : public Instances<Airplane> {
 	Airplane(const std::string& name)
 		: name{name} {
