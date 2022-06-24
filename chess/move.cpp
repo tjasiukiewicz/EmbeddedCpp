@@ -24,7 +24,7 @@ std::pair<int, int> name_to_index(const std::string& position) {
 	return {row, col};
 }
 
-}
+} // anonymous namespace
 
 Move::Move(const std::string& from_, const std::string& to_)
 	: from{from_}, to{to_} {

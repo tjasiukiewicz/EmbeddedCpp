@@ -35,7 +35,7 @@ inline bool is_cell_empty(char cell) {
 	return cell != ' ';
 }
 
-}
+} // anonymous namespace
 
 Board::Board() {
 	for (auto & row: fields) {
