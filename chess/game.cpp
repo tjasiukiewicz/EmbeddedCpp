@@ -1,10 +1,10 @@
 #include <iostream>
 #include "game.hpp"
-#include "player.hpp"
-#include "board.hpp"
 
 Game::Game()
-	: current_player{new Player("Adam")}, next_player{new Player("Eve")}, board{new Board()} {
+	: current_player{std::make_unique<Player>("Adam")},
+	next_player{std::make_unique<Player>("Eve")},
+	board{std::make_unique<Board>()} {
 }
 
 void Game::run() {
@@ -18,10 +18,4 @@ void Game::run() {
 		board->show();
 		std::swap(current_player, next_player);
 	}
-}
-
-Game::~Game() {
-	delete current_player;
-	delete next_player;
-	delete board;
 }

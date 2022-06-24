@@ -1,14 +1,14 @@
 #pragma once
 
-struct Player;
-struct Board;
+#include <memory>
+#include "player.hpp"
+#include "board.hpp"
 
 struct Game {
 	Game();
 	void run();
-	~Game();
 private:
-	Player * current_player;
-	Player * next_player;
-	Board * board;
+	std::unique_ptr<Player> current_player;
+	std::unique_ptr<Player> next_player;
+	const std::unique_ptr<Board> board;
 };
